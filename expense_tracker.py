@@ -32,18 +32,18 @@ class average_expenses(user_expenses):
     def __init__(self,name):
         super().__init__()
     def insert_meaningful_name(self, total, category):
-    """
+        """
         Args:
             budget(total): The total amount one has to spend on expenses
             user_expenses(categories): A dictionary with all the categories one can spend money
         Side effects:
             Creates a dictionary with all average expenses per category
-    """
+        """
         super().insert_meaningful_name()
-    def calculate_average(self)
-    """
-    Calculate and stores the average amount of the spendings per categories.
-    """
+    def calculate_average(self):
+        """
+        Calculate and stores the average amount of the spendings per categories.
+        """
     
 # Need to insert an analytics class where one takes info from the user expenses(in user class) and compares it to the average expenses (in avg expense class)
 
