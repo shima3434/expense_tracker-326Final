@@ -24,13 +24,14 @@ class user_expenses:
         """
     
 
-class average_expenses:
+class average_expenses(user_expenses):
     """
     Represents the amount the average american spends on the expenses per category
     and the average total amount they have to spend
     """
-    
-    def insert_meaningful_name(self, total, category)
+    def __init__(self,name):
+        super().__init__()
+    def insert_meaningful_name(self, total, category):
     """
         Args:
             budget(total): The total amount one has to spend on expenses
