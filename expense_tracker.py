@@ -12,9 +12,13 @@ class user_expenses:
     def __init__(self,name):
         self.name = name
 
-    def insert_meaningful_name(self, total, category):
+    def user_expenses(self, total, category):
         """
+<<<<<<< HEAD
         Creates a dictionary of the users expenses and the total they have to spend
+=======
+        Creates a dictionary of the users expenses and the total amount they have to spend
+>>>>>>> 9929e683875b0446f55c42e6bf473bc8f4fa8eae
         Args:
             budget(total): The total amount one has to spend on expenses
             user_expenses(categories): A dictionary with all the categories one can spend money
@@ -29,9 +33,17 @@ class average_expenses:
     Represents the amount the average american spends on the expenses per category
     and the average total amount they have to spend
     """
+<<<<<<< HEAD
     
     def insert_meaningful_name(self, total, category)
     """
+=======
+    def __init__(self,name):
+        super().__init__()
+    def ideal_expenses(self, total, category):
+        """
+        Creates a dictionary of ideal spending amounts per category 
+>>>>>>> 9929e683875b0446f55c42e6bf473bc8f4fa8eae
         Args:
             budget(total): The total amount one has to spend on expenses
             user_expenses(categories): A dictionary with all the categories one can spend money
