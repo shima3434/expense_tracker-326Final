@@ -14,11 +14,7 @@ class user_expenses:
 
     def user_expenses(self, total, category):
         """
-<<<<<<< HEAD
-        Creates a dictionary of the users expenses and the total they have to spend
-=======
         Creates a dictionary of the users expenses and the total amount they have to spend
->>>>>>> 9929e683875b0446f55c42e6bf473bc8f4fa8eae
         Args:
             budget(total): The total amount one has to spend on expenses
             user_expenses(categories): A dictionary with all the categories one can spend money
@@ -33,17 +29,11 @@ class average_expenses:
     Represents the amount the average american spends on the expenses per category
     and the average total amount they have to spend
     """
-<<<<<<< HEAD
-    
-    def insert_meaningful_name(self, total, category)
-    """
-=======
     def __init__(self,name):
         super().__init__()
     def ideal_expenses(self, total, category):
         """
         Creates a dictionary of ideal spending amounts per category 
->>>>>>> 9929e683875b0446f55c42e6bf473bc8f4fa8eae
         Args:
             budget(total): The total amount one has to spend on expenses
             user_expenses(categories): A dictionary with all the categories one can spend money
@@ -54,6 +44,36 @@ class average_expenses:
 # Need to insert an analytics class where one takes info from the user expenses(in user class) and compares it to the average expenses (in avg expense class)
 
 class expense_analysis:
+    """
+    represents the methods used in various analytics for tracking
+    
+    track percentage of categorical spending over the total
+    track what single expense was the highest
+    track which category has the highest spending
+    """
+    
+    def percentage(self,expenses):
+        """ calculates percentage of categorical spending over the total
+        args:
+            expenses (dict) - dictionary from average_expenese class
+        returns:
+            output of categorical spending
+        """
+    def most_expense(self,expenses):
+        """ finds the single largest expense
+        args:
+            expenses (dict)
+        return:
+            largest expense over all the categories
+        """
+    def highest_category(self,expenses):
+        """ finds which category has the highest spending in terms of amount spent
+        args:
+            expenses (dict)
+        return:
+            highest spending category
+        """
+
     
 
 # Need to add the part where we write the info to a file
