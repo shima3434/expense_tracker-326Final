@@ -41,8 +41,6 @@ class average_expenses:
             Creates a dictionay with all average expenses per category
     """
     
-# Need to insert an analytics class where one takes info from the user expenses(in user class) and compares it to the average expenses (in avg expense class)
-
 class expense_analysis:
     """
     represents the methods used in various analytics for tracking
@@ -74,9 +72,6 @@ class expense_analysis:
             highest spending category
         """
 
-    
-
-# Need to add the part where we write the info to a file
 
 
 def write_amounts(self):
