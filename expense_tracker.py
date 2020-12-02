@@ -28,7 +28,7 @@ class UserExpenses:
         
         expense_dict = {}
         
-        expense_dict["food"] = food
+        expense_dict["Food"] = food
         expense_dict["Utility Bills"] = utility_bills
         expense_dict["Entertainment"] = entertainment
         expense_dict["Travel"] = travel
