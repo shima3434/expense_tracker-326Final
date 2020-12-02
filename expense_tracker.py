@@ -1,7 +1,5 @@
 #Names: Shima Abdulla, Do Yun Kim, Burhan Marvi, Joseph Sanchez
 import json
-from argparse import ArgumentParser
-import sys
 """
 This is an expense tracker that aims to examine ones monthly expenditures by category and give suggestions on where money may be saved.
 """
@@ -45,12 +43,11 @@ class AverageExpenses:
     """
     def __init__(self,name):
         self.name = name
-    def ideal_expenses(self, total, category):
+    def ideal_expenses(self, total):
         """
         Creates a dictionary of ideal spending amounts per category 
         Args:
             budget(total): The total amount one has to spend on expenses
-            user_expenses(categories): A dictionary with all the categories one can spend money
         Side effects:
             Creates a dictionay with all average expenses per category
         """
