@@ -101,21 +101,39 @@ class ExpenseAnalysis:
     def highest_category(self,expenses):
         """ finds which category has the highest spending in terms of amount spent
         args:
-            expenses (dict)
+            expenses (dict) 
         return:
             highest spending category
         """
-
-
-
-def write_amounts(self):
-    """
-    Writes and saves previous dictionaries as json files
-    """
     
-    # Expense is a dict so assigned variable must be a dict too
-    expense = user_expense
-    
-    #serializing json
-    with open ("amounts,txt", "w") as outfile:
-        json.dump(expense, outfile)
+    #Write function
+    def write_amounts(self, filename):
+        """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
+        """
+        #Filename would be NameofFile.json
+    fh = open(filename, "w")
+    expenseData = [expense_dict, avg_expense_dict]
+    json.dump(expenseData, outfile)
+
+
+def parse_args(arglist):
+    """ Parse and validate command-line arguments.
+    Parameters: arglist (list of str): list of command-line arguments.
+    Returns: namespace
+    """  
+    # set up argument parser
+    parser = ArgumentParser()
+    parser.add_argument("name", type=str,
+                        help="Name of user")
+    parser.add_argument("total", type=float,
+                        help="Monthly budget that is allowed to be spent")
+    parser.add_argument("expenses", type=dict,
+                        help="Dictionary variable from average_expense class")
+    parser.add_argument("filename", type=str,
+                        help="Name of the file or path to file")   
+    return parser.parse_args(arglist)
+
+
+if __name__ == "__main__":
+    args = parse_args(sys.argv[1:]
+    #Call functions
