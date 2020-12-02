@@ -48,7 +48,6 @@ class AverageExpenses:
         Creates a dictionary of ideal spending amounts per category 
         Args:
             budget(total): The total amount one has to spend on expenses
-            user_expenses(categories): A dictionary with all the categories one can spend money
         Side effects:
             Creates a dictionay with all average expenses per category
         """
