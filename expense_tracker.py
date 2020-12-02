@@ -42,7 +42,7 @@ class average_expenses:
     and the average total amount they have to spend
     """
     def __init__(self,name):
-        super().__init__()
+        self.name = name
     def ideal_expenses(self, total, category):
         """
         Creates a dictionary of ideal spending amounts per category 
@@ -52,6 +52,7 @@ class average_expenses:
         Side effects:
             Creates a dictionay with all average expenses per category
     """
+        
     
 class expense_analysis:
     """
