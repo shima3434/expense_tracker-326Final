@@ -1,0 +1,5 @@
+Food:600
+Utility Bills:1573
+Entertainment:242.75
+Travel:754
+Extra:80
