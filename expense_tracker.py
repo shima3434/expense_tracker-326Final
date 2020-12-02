@@ -43,7 +43,7 @@ class AverageExpenses:
     """
     def __init__(self,name):
         self.name = name
-    def ideal_expenses(self, total, category):
+    def ideal_expenses(self, total):
         """
         Creates a dictionary of ideal spending amounts per category 
         Args:
