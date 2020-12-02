@@ -12,16 +12,28 @@ class user_expenses:
     def __init__(self,name):
         self.name = name
 
-    def user_expenses(self, total, category):
-        """
+    def user_expenses(self, total):
+        """"
         Creates a dictionary of the users expenses and the total amount they have to spend
         Args:
             budget(total): The total amount one has to spend on expenses
-            user_expenses(categories): A dictionary with all the categories one can spend money
-        
         Side effect: 
             Fills the user expenses dictionary with their total expenses per category
         """
+        food = float(input("How much do you spend on food monthly? "))
+        utility_bills = float(input("What is your total utility bill? "))
+        entertainment = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
+        travel = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
+        extra = float(input("What is you expense for other miscellaneous things?"))
+        
+        expense_dict = {}
+        
+        expense_dict["food"] = food
+        expense_dict["Utility Bills"] = utility_bills
+        expense_dict["Entertainment"] = entertainment
+        expense_dict["Travel"] = travel
+        expense_dict["Extra"] = extra
+
     
 
 class average_expenses:
