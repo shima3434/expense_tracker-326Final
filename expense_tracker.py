@@ -51,30 +51,13 @@ class AverageExpenses:
         Side effects:
             Creates a dictionay with all average expenses per category
         """
-        food_avg = 0
-        util_avg = 0
-        entertainment_avg = 0
-        travel_avg = 0
-        extra_avg = 0
-        for key, value in expense_dict:
-            if key == "food":
-                food_avg = food_avg+ value
-            elif key == "Utility Bills":
-                util_avg = util_avg + value
-            elif key == "Entertainment":
-                entertainment_avg = entertainment_avg + value
-            elif key == "Travel":
-                travel_avg = travel_avg + value
-            elif key == "Extra":
-                extra_avg = extra_avg + value
         avg_expense_dict = {}
-        avg_expense_dict["Food"] = food_avg
-        avg_expense_dict["Utility Bills"] = util_avg
-        avg_expense_dict["Entertainment"] = entertainment_avg
-        avg_expense_dict["Travel"] = travel_avg
-        avg_expense_dict["Extra"] = extra_avg
-            
-    
+        with open("avgexpenses.txt","r",encoding="utf-8") as f:
+            for line in f:
+                (key,val) = line.strip().split(':')
+                avg_expense_dict[key]= val
+                
+                
 class ExpenseAnalysis:
     """
     represents the methods used in various analytics for tracking
