@@ -106,12 +106,7 @@ def main(name, monthly_budget, filename):
     et.user_Expense()
     et.ideal_expenses(monthly_budget)
     et.write_amounts(filename)
-    et.read_amounts(filename)
-    
-    
-    
-    
-    
+    et.read_amounts(filename)    
     
 def parse_args(arglist):
     """ Parse and validate command-line arguments.
@@ -127,12 +122,13 @@ def parse_args(arglist):
     parser.add_argument("expenses", type=dict,
                         help="Dictionary variable from average_expense class")
     parser.add_argument("filename", type=str,
-                        help="Name of the file or path to file")   
-    if args.name != str:
+                        help="Name of the file or path to file")
+    args = parser.parse_args()
+    if args.name == str:
         raise TypeError("Name must be a word")
     if args.total < 0:
         raise ValueError("Your budget must be a positive number")
-    return parser.parse_args(arglist)
+    return args
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
