@@ -104,7 +104,7 @@ class Expenses:
         fh = open(filename)
         tracker = json.load(fh)
         for item in tracker:
-            print([item[:]])
+            print(item)
 
 def main(name, monthly_budget, filename="expenses.json"):
     """ Display the users name, budget, expenses for each category
@@ -131,12 +131,8 @@ def parse_args(arglist):
     parser.add_argument("monthly_budget", type=float,
                         help="Monthly budget that is allowed to be spent")
     args = parser.parse_args()
-    if args.name != str:
-        raise TypeError("Name must be a word")
-    if args.total < 0:
-        raise ValueError("Your budget must be a positive number")
     return args
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.name, args.monthly_budget, args.filename)
+    main(args.name, args.monthly_budget)
