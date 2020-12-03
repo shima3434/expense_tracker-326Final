@@ -103,7 +103,7 @@ class Expenses:
             print([item[:]])
 
 def main(name, monthly_budget, filename):
-    """ The actual program
+    """ Display the users name, budget, expenses for each category
     Args:  
         name (str)
         monthly_budget ()
