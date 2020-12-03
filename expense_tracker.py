@@ -40,9 +40,10 @@ class Expenses:
         """
         Creates a dictionary of ideal spending amounts per category 
         Args:
-            monthly_budget: The total amount one has to spend on expenses
+            monthly_budget(float): The total amount one has to spend on expenses
         Side effects:
-            Creates a dictionay with all ideal (or what we called avg) expenses per category
+            Creates a dictionay(dict of str and float, the keys will be string(e.g., "Food", "Utility), 
+            and the values will be float(e.g., "600.00","1573.00") with all ideal (or what we called avg) expenses per category
         """
         self.avg_expense_dict = {}
         with open("avgexpenses.txt","r",encoding="utf-8") as f:
