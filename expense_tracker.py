@@ -34,6 +34,8 @@ class Expenses:
         self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
         self.user_expenses["Travel"] = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
         self.user_expenses["Extra"] = float(input("What is you expense for other miscellaneous things? "))
+        
+        
     
     def ideal_expenses(self, monthly_budget):
         """
@@ -87,15 +89,16 @@ class Expenses:
         
     def write_amounts(self, filename):
         """ Writes and saves previous dictionaries as json files which the user can use to track their expenses
+        args:
+            filename (str): the files name main method defaults filename
         """
     #Filename would be NameofFile.json
-        fh = open(filename, "a+")
+        fh = open("expenses.json", "a+")
         expenseData = [self.user_expenses, self.avg_expense_dict]
         json.dump(expenseData, fh)
 
     def read_amounts(self, filename):
-        """
-        Reads and print out the contents of a json file
+        """ Reads and print out the contents of a json file
         args:
             filename (str): filename/path to a json file
         """
@@ -104,7 +107,7 @@ class Expenses:
         for item in tracker:
             print([item[:]])
 
-def main(name, monthly_budget, filename):
+def main(name, monthly_budget, filename="expenses.json"):
     """ Display the users name, budget, expenses for each category
     Args:  
         name (str)
@@ -128,10 +131,6 @@ def parse_args(arglist):
                         help="Name of user")
     parser.add_argument("monthly_budget", type=float,
                         help="Monthly budget that is allowed to be spent")
-    parser.add_argument("expenses", type=dict,
-                        help="Dictionary variable from average_expense class")
-    parser.add_argument("filename", type=str,
-                        help="Name of the file or path to file")
     args = parser.parse_args()
     if args.name != str:
         raise TypeError("Name must be a word")
