@@ -11,6 +11,11 @@ class Expenses:
     Compares the ideal expenses to the user expenses to describe where the user should save more and gives where the user is spending the most .
     """
     def __init__(self, name, monthly_budget):
+        """ Create an instance of the Expenses class
+        args:
+            name (str): Name of user
+            monthly_budget(float): Monthly Budget or take-home pay
+        """
         self.name = name
         self.monthly_budget = monthly_budget
         
@@ -18,7 +23,7 @@ class Expenses:
         """"
         Creates a dictionary of the users expenses and the total amount they have to spend
         Args:
-            total (float): The total amount one has to spend on expenses
+            monthly_budget(float): The total amount one has to spend on expenses
         Side effect: 
             Fills the user expenses dictionary with their total expenses per category
         """
@@ -90,20 +95,25 @@ class Expenses:
         for item in tracker:
             print([item[:]])
 
-def main():
+def main(name, monthly_budget):
     """ The actual program
+    Args:  
+        name (str)
+        monthly_budget ()
     """
+    
+    
     
 def parse_args(arglist):
     """ Parse and validate command-line arguments.
-    Parameters: arglist (list of str): list of command-line arguments.
+    Args: arglist (list of str): list of command-line arguments.
     Returns: namespace
     """  
     # set up argument parser
     parser = ArgumentParser()
     parser.add_argument("name", type=str,
                         help="Name of user")
-    parser.add_argument("total", type=float,
+    parser.add_argument("monthly_budget", type=float,
                         help="Monthly budget that is allowed to be spent")
     parser.add_argument("expenses", type=dict,
                         help="Dictionary variable from average_expense class")
