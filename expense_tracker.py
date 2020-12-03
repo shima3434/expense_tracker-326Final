@@ -54,7 +54,7 @@ class Expenses:
     def percentage(self,expenses):
         """ calculates percentage of categorical spending over the total in terms of user expenses
         args:
-            expenses (dict) - dictionary from average_expenese class
+            expenses (dict) - dictionary from Expenses Class
         returns:
             output of categorical spending
         """
@@ -62,13 +62,13 @@ class Expenses:
     def most_expense(self,expenses):
         """ finds the single largest expense
         args:
-            expenses (dict)
+            expenses (dict) - dictionary from Expenses Class
         return:
             largest expense over all the categories
         """
         
     def compare(self,expenses):
-        """ Compares the user expeses dictionary to the ideal expenses dictionary and gives feedback where neccsary
+        """ Compares the user expenses dictionary to the ideal expenses dictionary and gives feedback where neccesary
         args:
             expenses(dict) 
         return:
