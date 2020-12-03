@@ -1,4 +1,6 @@
 #Names: Shima Abdulla, Do Yun Kim, Burhan Marvi, Joseph Sanchez
+
+from argparse import ArgumentParser
 import json
 import sys
 from argparse import ArgumentParser
@@ -27,18 +29,12 @@ class Expenses:
         Side effect: 
             Fills the user expenses dictionary with their total expenses per category
         """
-        self.monthly_expenses = {}
-        food = float(input("How much do you spend on food monthly? "))
-        utility_bills = float(input("What is your total utility bill? "))
-        entertainment = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
-        travel = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
-        extra = float(input("What is you expense for other miscellaneous things?"))
-        self.monthly_expenses["Food"] = food
-        self.monthly_expenses["Utility Bills"] = utility_bills
-        self.monthly_expenses["Entertainment"] = entertainment
-        self.monthly_expenses["Travel"] = travel
-        self.monthly_expenses["Extra"] = extra
-        
+        self.user_expenses = {}
+        self.user_expenses["Food"] = float(input("How much do you spend on food monthly? "))
+        self.user_expenses["Utility Bills"] = float(input("What is your total utility bill? "))
+        self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
+        self.user_expenses["Travel"] = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
+        self.user_expenses["Extra"] = float(input("What is you expense for other miscellaneous things? "))
 
     def ideal_expenses(self, monthly_budget):
         """
@@ -46,7 +42,7 @@ class Expenses:
         Args:
             monthly_budget: The total amount one has to spend on expenses
         Side effects:
-            Creates a dictionay with all average expenses per category
+            Creates a dictionay with all ideal (or what we called avg) expenses per category
         """
         self.avg_expense_dict = {}
         with open("avgexpenses.txt","r",encoding="utf-8") as f:
@@ -55,12 +51,13 @@ class Expenses:
                 self.avg_expense_dict[key]= val
                 
     def percentage(self,expenses):
-        """ calculates percentage of categorical spending over the total
+        """ calculates percentage of categorical spending over the total in terms of user expenses
         args:
             expenses (dict) - dictionary from average_expenese class
         returns:
             output of categorical spending
         """
+        
     def most_expense(self,expenses):
         """ finds the single largest expense
         args:
@@ -68,13 +65,22 @@ class Expenses:
         return:
             largest expense over all the categories
         """
-    def highest_category(self,expenses):
-        """ finds which category has the highest spending in terms of amount spent
+        
+    def compare(self,expenses):
+        """ Compares the user expeses dictionary to the ideal expenses dictionary and gives feedback where neccsary
         args:
-            expenses (dict) 
+            expenses(dict) 
         return:
-            highest spending category
+            String-Feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
         """
+        for key in user_expenses and avg_expense_dict:
+            if user_expenses[key] > avg_expense_dict[key]:
+                if key in user_expenses.keys():
+                    if user_expenses[value] > avg_expense_dict[value]:
+                        return (f"You are spending above ideal amounts for you monthly {key} expense. Spend less next month")
+                else:
+                    if key in user_expenses.keys():
+                        return(f"The amount you are spending is great for your monthly {key} expense.")
         
     def write_amounts(self, filename):
         """ Writes and saves previous dictionaries as json files which the user can use to track their expenses
