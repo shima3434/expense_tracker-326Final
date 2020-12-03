@@ -57,9 +57,10 @@ class Expenses:
         returns:
             string messgae of the percentage of budget spent
         """
+        print("\n")
         for key, value in self.user_expenses.items():
             print(f"you spent {(value/self.monthly_budget)*100}% of your budget on {key}")
-        
+        print("\n")
         
     def most_expense(self):
         """ finds the single largest expense
@@ -68,7 +69,7 @@ class Expenses:
         """
         max_exp = max(self.user_expenses, key = lambda x: self.user_expenses[x])
         print(f"The category with the largest expense is {max_exp} with a value of {self.user_expenses[max_exp]}")
-            
+        print("\n")    
         
     def compare(self):
         """ Compares the user expenses dictionary to the ideal expenses dictionary and gives feedback where neccesary
