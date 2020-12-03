@@ -95,8 +95,7 @@ class Expenses:
         json.dump(expenseData, fh)
 
     def read_amounts(self, filename):
-        """
-        Reads and print out the contents of a json file
+        """ Reads and print out the contents of a json file
         args:
             filename (str): filename/path to a json file
         """
@@ -129,10 +128,6 @@ def parse_args(arglist):
                         help="Name of user")
     parser.add_argument("monthly_budget", type=float,
                         help="Monthly budget that is allowed to be spent")
-    parser.add_argument("expenses", type=dict,
-                        help="Dictionary variable from average_expense class")
-    parser.add_argument("filename", type=str,
-                        help="Name of the file or path to file")
     args = parser.parse_args()
     if args.name != str:
         raise TypeError("Name must be a word")
