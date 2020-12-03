@@ -19,7 +19,7 @@ class Expenses:
         """"
         Creates a dictionary of the users expenses and the total amount they have to spend
         Args:
-            budget(total): The total amount one has to spend on expenses
+            total (float): The total amount one has to spend on expenses
         Side effect: 
             Fills the user expenses dictionary with their total expenses per category
         """
@@ -82,7 +82,7 @@ class ExpenseAnalysis:
         return:
             highest spending category
         """
-    
+
 #Write function ***I think this might be outside of the class***
 def write_amounts(self, filename):
     """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
@@ -92,7 +92,10 @@ def write_amounts(self, filename):
     expenseData = [expense_dict, avg_expense_dict]
     json.dump(expenseData, fh)
 
-
+def main():
+    """ The actual program
+    """
+    
 def parse_args(arglist):
     """ Parse and validate command-line arguments.
     Parameters: arglist (list of str): list of command-line arguments.
@@ -109,7 +112,11 @@ def parse_args(arglist):
     parser.add_argument("filename", type=str,
                         help="Name of the file or path to file")   
     return parser.parse_args(arglist)
-
+    if args.name !== str:
+        raise TypeError("Name must be a word")
+    if args.total < 0:
+        raise ValueError("Your budget must be a positive number")
+    return parser.parse_args(arglist)
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
