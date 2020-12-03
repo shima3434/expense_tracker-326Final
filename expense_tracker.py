@@ -115,7 +115,7 @@ def main(name, monthly_budget, filename="expenses.json"):
     #et is short for expense tracker
     et = Expenses(name,monthly_budget)
     et.record_expenses()
-    et.ideal_expenses(monthly_budget)
+    et.ideal_expenses()
     et.write_amounts(filename)
     et.read_amounts(filename)    
     
