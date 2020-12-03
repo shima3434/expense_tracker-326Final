@@ -40,11 +40,11 @@ class Expenses:
         self.monthly_expenses["Extra"] = extra
         
 
-    def ideal_expenses(self, total):
+    def ideal_expenses(self, monthly_budget):
         """
         Creates a dictionary of ideal spending amounts per category 
         Args:
-            budget(total): The total amount one has to spend on expenses
+            monthly_budget: The total amount one has to spend on expenses
         Side effects:
             Creates a dictionay with all average expenses per category
         """
@@ -95,12 +95,21 @@ class Expenses:
         for item in tracker:
             print([item[:]])
 
-def main(name, monthly_budget):
+def main(name, monthly_budget, filename):
     """ The actual program
     Args:  
         name (str)
         monthly_budget ()
     """
+    #et is short for expense tracker
+    et = Expenses()
+    et.user_Expense()
+    et.ideal_expenses(monthly_budget)
+    et.write_amounts(filename)
+    et.read_amounts(filename)
+    
+    
+    
     
     
     
@@ -127,4 +136,4 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    #Call functions
+    main(args.name, args.montly_budget, args.filename)
