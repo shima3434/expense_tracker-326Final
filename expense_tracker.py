@@ -92,19 +92,19 @@ class Expenses:
             filename (str): the files name main method defaults filename
         """
     #Filename would be NameofFile.json
-        fh = open("expenses.json", "a+")
-        expenseData = [self.user_expenses, self.avg_expense_dict]
-        json.dump(expenseData, fh)
+        with open("expenses.json", "a+") as fh:
+            expenseData = [self.user_expenses, self.avg_expense_dict]
+            json.dump(expenseData, fh)
 
     def read_amounts(self, filename):
         """ Reads and print out the contents of a json file
         args:
             filename (str): filename/path to a json file
         """
-        fh = open(filename)
-        tracker = json.load(fh)
-        for item in tracker:
-            print(item)
+        with open(filename) as fh:
+            tracker = json.load(fh)
+            for item in tracker:
+                print(item)
 
 def main(name, monthly_budget, filename="expenses.json"):
     """ Display the users name, budget, expenses for each category
