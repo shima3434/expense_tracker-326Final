@@ -4,10 +4,11 @@ import json
 This is an expense tracker that aims to examine ones monthly expenditures by category and give suggestions on where money may be saved.
 """
 
-class UserExpenses:
+class Expenses:
     """
-    Represents the total amount the user has to spend on their expenses
-    and the amount that the user actuallly spends per category
+    Determines the monthly expenses of a single user by category(i.e, food, utility entertainment etc) 
+    Detemrines the ideal or average monthly expenses for a single person. 
+    Compares the ideal expenses to the user expenses to describe where the user should save more and gives where the user is spending the most .
     """
     def __init__(self,name):
         self.name = name
@@ -34,15 +35,6 @@ class UserExpenses:
         expense_dict["Travel"] = travel
         expense_dict["Extra"] = extra
 
-    
-
-class AverageExpenses:
-    """
-    Represents the amount the average american spends on the expenses per category
-    and the average total amount they have to spend
-    """
-    def __init__(self,name):
-        self.name = name
     def ideal_expenses(self, total):
         """
         Creates a dictionary of ideal spending amounts per category 
@@ -89,7 +81,7 @@ class ExpenseAnalysis:
             highest spending category
         """
     
-    #Write function
+    #Write function ***I think this might be outside of the class***
     def write_amounts(self, filename):
         """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
         """
