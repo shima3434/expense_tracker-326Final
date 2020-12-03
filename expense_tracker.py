@@ -26,16 +26,16 @@ class Expenses:
         food = float(input("How much do you spend on food monthly? "))
         utility_bills = float(input("What is your total utility bill? "))
         entertainment = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
-        travel = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
+        travel = float(input("What is your average monthly travel expense(includes: gas, bus fair etc...)? "))
         extra = float(input("What is you expense for other miscellaneous things?"))
         
-        expense_dict = {}
+        self.expense_dict = {}
         
-        expense_dict["Food"] = food
-        expense_dict["Utility Bills"] = utility_bills
-        expense_dict["Entertainment"] = entertainment
-        expense_dict["Travel"] = travel
-        expense_dict["Extra"] = extra
+        self.expense_dict["Food"] = food
+        self.expense_dict["Utility Bills"] = utility_bills
+        self.expense_dict["Entertainment"] = entertainment
+        self.expense_dict["Travel"] = travel
+        self.expense_dict["Extra"] = extra
 
     def ideal_expenses(self, total):
         """
@@ -61,21 +61,22 @@ class ExpenseAnalysis:
     track which category has the highest spending
     """
     
-    def percentage(self,expenses):
+    def percentage(self):
         """ calculates percentage of categorical spending over the total
         args:
             expenses (dict) - dictionary from average_expenese class
         returns:
             output of categorical spending
         """
-    def most_expense(self,expenses):
+        
+    def most_expense(self):
         """ finds the single largest expense
         args:
             expenses (dict)
         return:
             largest expense over all the categories
         """
-    def highest_category(self,expenses):
+    def compare(self):
         """ finds which category has the highest spending in terms of amount spent
         args:
             expenses (dict) 
