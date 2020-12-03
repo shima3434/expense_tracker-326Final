@@ -74,12 +74,12 @@ class Expenses:
             String-Feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
         """
         for key in self.user_expenses and self.avg_expense_dict:
-            if user_expenses[key] > avg_expense_dict[key]:
-                if key in user_expenses.keys():
-                    if user_expenses[value] > avg_expense_dict[value]:
+            if self.user_expenses[key] > self.avg_expense_dict[key]:
+                if key in self.user_expenses.keys():
+                    if self.user_expenses[value] > self.avg_expense_dict[value]:
                         return (f"You are spending above ideal amounts for you monthly {key} expense. Spend less next month")
                 else:
-                    if key in user_expenses.keys():
+                    if key in self.user_expenses.keys():
                         return(f"The amount you are spending is great for your monthly {key} expense.")
         
     def write_amounts(self, filename):
