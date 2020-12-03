@@ -25,7 +25,7 @@ class Expenses:
         """"
         Creates a dictionary of the users expenses and the total amount they have to spend
         Args:
-            total (float): The total amount one has to spend on expenses
+            monthly_budget(float): The total amount one has to spend on expenses
         Side effect: 
             Fills the user expenses dictionary with their total expenses per category
         """
@@ -35,21 +35,20 @@ class Expenses:
         self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
         self.user_expenses["Travel"] = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
         self.user_expenses["Extra"] = float(input("What is you expense for other miscellaneous things? "))
-        return user_expenses
 
-    def ideal_expenses(self, total):
+    def ideal_expenses(self, monthly_budget):
         """
         Creates a dictionary of ideal spending amounts per category 
         Args:
-            budget(total): The total amount one has to spend on expenses
+            monthly_budget: The total amount one has to spend on expenses
         Side effects:
-            Creates a dictionay with all average expenses per category
+            Creates a dictionay with all ideal (or what we called avg) expenses per category
         """
-        self.ideal_expense_dict = {}
+        self.avg_expense_dict = {}
         with open("avgexpenses.txt","r",encoding="utf-8") as f:
             for line in f:
                 (key,val) = line.strip().split(':')
-                self.ideal_expense_dict[key]= val
+                self.avg_expense_dict[key]= val
                 
     def percentage(self,expenses):
         """ calculates percentage of categorical spending over the total in terms of user expenses
@@ -58,6 +57,7 @@ class Expenses:
         returns:
             output of categorical spending
         """
+        
     def most_expense(self,expenses):
         """ finds the single largest expense
         args:
@@ -65,6 +65,7 @@ class Expenses:
         return:
             largest expense over all the categories
         """
+        
     def compare(self,expenses):
         """ Compares the user expeses dictionary to the ideal expenses dictionary and gives feedback where neccsary
         args:
@@ -72,10 +73,10 @@ class Expenses:
         return:
             String-Feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
         """
-        for key in user_expenses and ideal_expense_dict:
-            if user_expenses[key] > ideal_expense_dict[key]:
+        for key in user_expenses and avg_expense_dict:
+            if user_expenses[key] > avg_expense_dict[key]:
                 if key in user_expenses.keys():
-                    if user_expenses[value] > ideal_expense_dict[value]:
+                    if user_expenses[value] > avg_expense_dict[value]:
                         return (f"You are spending above ideal amounts for you monthly {key} expense. Spend less next month")
                 else:
                     if key in user_expenses.keys():
@@ -111,28 +112,30 @@ def main(name, monthly_budget, filename):
     et.user_Expense()
     et.ideal_expenses(monthly_budget)
     et.write_amounts(filename)
-    et.read_amounts(filename)  
+    et.read_amounts(filename)    
     
 def parse_args(arglist):
     """ Parse and validate command-line arguments.
-    Parameters: arglist (list of str): list of command-line arguments.
+    Args: arglist (list of str): list of command-line arguments.
     Returns: namespace
     """  
     # set up argument parser
     parser = ArgumentParser()
     parser.add_argument("name", type=str,
                         help="Name of user")
-    parser.add_argument("total", type=float,
+    parser.add_argument("monthly_budget", type=float,
                         help="Monthly budget that is allowed to be spent")
     parser.add_argument("expenses", type=dict,
                         help="Dictionary variable from average_expense class")
     parser.add_argument("filename", type=str,
-                        help="Name of the file or path to file")   
-    if args.name != str:
+                        help="Name of the file or path to file")
+    args = parser.parse_args()
+    if args.name == str:
         raise TypeError("Name must be a word")
     if args.total < 0:
         raise ValueError("Your budget must be a positive number")
     return args
 
 if __name__ == "__main__":
+    args = parse_args(sys.argv[1:])
     main(args.name, args.montly_budget, args.filename)
