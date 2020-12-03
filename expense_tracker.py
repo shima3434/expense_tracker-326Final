@@ -78,7 +78,7 @@ class Expenses:
         return:
             String-Feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
         """
-        for key in self.user_expenses and self.avg_expense_dict:
+        for key, value in self.user_expenses and self.avg_expense_dict:
             if self.user_expenses[key] > self.avg_expense_dict[key]:
                 if key in self.user_expenses.keys():
                     if self.user_expenses[value] > self.avg_expense_dict[value]:
