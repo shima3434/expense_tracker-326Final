@@ -20,7 +20,7 @@ class Expenses:
         self.name = name
         self.monthly_budget = monthly_budget
         
-    def user_expenses(self):
+    def record_expenses(self):
         """"
         Creates a dictionary of the users expenses and the total amount they have to spend
         Args:
@@ -109,7 +109,7 @@ def main(name, monthly_budget, filename):
     """
     #et is short for expense tracker
     et = Expenses(name,monthly_budget)
-    et.user_Expense()
+    et.record_expenses()
     et.ideal_expenses(monthly_budget)
     et.write_amounts(filename)
     et.read_amounts(filename)    
