@@ -37,7 +37,7 @@ class Expenses:
         
         
     
-    def ideal_expenses(self, monthly_budget):
+    def ideal_expenses(self):
         """
         Creates a dictionary of ideal spending amounts per category 
         Args:
@@ -53,14 +53,14 @@ class Expenses:
                 self.avg_expense_dict[key]= val
                 
     def percentage(self):
-        """ calculates percentage of categorical spending over the total in terms of user expenses
+        """ calculates percentage of of your total budget spent per expense category 
         args:
-            expenses (dict) - dictionary from Expenses Class
+            expenses(dict)
         returns:
-            output of categorical spending
+            string messgae of the percentage of budget spent
         """
         for key, value in self.user_expenses:
-            print(f"you spend {(value/self.monthly_budget)*100} percent of your budget on {key}")
+            return(f"you spent {(value/self.monthly_budget)*100}% of your budget on {key}")
         
         
     def most_expense(self):
