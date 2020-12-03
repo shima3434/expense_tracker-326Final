@@ -20,7 +20,7 @@ class Expenses:
         self.name = name
         self.monthly_budget = monthly_budget
         
-    def user_expense(self):
+    def user_expenses(self):
         """"
         Creates a dictionary of the users expenses and the total amount they have to spend
         Args:
@@ -35,7 +35,7 @@ class Expenses:
         self.user_expenses["Travel"] = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
         self.user_expenses["Extra"] = float(input("What is you expense for other miscellaneous things? "))
     
-    def ideal_expense(self, monthly_budget):
+    def ideal_expenses(self, monthly_budget):
         """
         Creates a dictionary of ideal spending amounts per category 
         Args:
