@@ -102,7 +102,7 @@ def main(name, monthly_budget, filename):
         monthly_budget ()
     """
     #et is short for expense tracker
-    et = Expenses()
+    et = Expenses(name,monthly_budget)
     et.user_Expense()
     et.ideal_expenses(monthly_budget)
     et.write_amounts(filename)
