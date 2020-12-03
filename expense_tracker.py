@@ -83,14 +83,14 @@ class ExpenseAnalysis:
             highest spending category
         """
     
-    #Write function ***I think this might be outside of the class***
-    def write_amounts(self, filename):
-        """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
-        """
-        #Filename would be NameofFile.json
+#Write function ***I think this might be outside of the class***
+def write_amounts(self, filename):
+    """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
+    """
+    #Filename would be NameofFile.json
     fh = open(filename, "w")
     expenseData = [expense_dict, avg_expense_dict]
-    json.dump(expenseData, outfile)
+    json.dump(expenseData, fh)
 
 
 def parse_args(arglist):
