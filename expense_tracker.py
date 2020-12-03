@@ -3,7 +3,6 @@
 from argparse import ArgumentParser
 import json
 import sys
-from argparse import ArgumentParser
 
 
 class Expenses:
@@ -21,7 +20,7 @@ class Expenses:
         self.name = name
         self.monthly_budget = monthly_budget
         
-    def user_Expense(self):
+    def user_expense(self):
         """"
         Creates a dictionary of the users expenses and the total amount they have to spend
         Args:
@@ -35,8 +34,8 @@ class Expenses:
         self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
         self.user_expenses["Travel"] = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
         self.user_expenses["Extra"] = float(input("What is you expense for other miscellaneous things? "))
-
-    def ideal_expenses(self, monthly_budget):
+    
+    def ideal_expense(self, monthly_budget):
         """
         Creates a dictionary of ideal spending amounts per category 
         Args:
@@ -51,7 +50,7 @@ class Expenses:
                 (key,val) = line.strip().split(':')
                 self.avg_expense_dict[key]= val
                 
-    def percentage(self,expenses):
+    def percentage(self):
         """ calculates percentage of categorical spending over the total in terms of user expenses
         args:
             expenses (dict) - dictionary from Expenses Class
@@ -59,7 +58,7 @@ class Expenses:
             output of categorical spending
         """
         
-    def most_expense(self,expenses):
+    def most_expense(self):
         """ finds the single largest expense
         args:
             expenses (dict) - dictionary from Expenses Class
@@ -67,14 +66,14 @@ class Expenses:
             largest expense over all the categories
         """
         
-    def compare(self,expenses):
+    def compare(self):
         """ Compares the user expenses dictionary to the ideal expenses dictionary and gives feedback where neccesary
         args:
             expenses(dict) 
         return:
             String-Feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
         """
-        for key in user_expenses and avg_expense_dict:
+        for key in self.user_expenses and self.avg_expense_dict:
             if user_expenses[key] > avg_expense_dict[key]:
                 if key in user_expenses.keys():
                     if user_expenses[value] > avg_expense_dict[value]:
