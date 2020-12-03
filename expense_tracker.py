@@ -53,9 +53,7 @@ class Expenses:
                 self.avg_expense_dict[key]= val
                 
     def percentage(self):
-        """ calculates percentage of of your total budget spent per expense category 
-        args:
-            expenses(dict)
+        """ calculates percentage of your total budget spent per expense category 
         returns:
             string messgae of the percentage of budget spent
         """
@@ -65,13 +63,11 @@ class Expenses:
         
     def most_expense(self):
         """ finds the single largest expense
-        args:
-            expenses (dict) - dictionary from Expenses Class
         return:
             largest expense over all the categories
         """
         max_exp = max(self.user_expenses, key = lambda x: self.user_expenses[x])
-        print(f"The category with the largest expense is {max_exp} with a value of {self.user_expenses[max_exp]}")
+        return(f"The category with the largest expense is {max_exp} with a value of {self.user_expenses[max_exp]}")
             
         
     def compare(self):
