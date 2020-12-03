@@ -88,7 +88,7 @@ def write_amounts(self, filename):
     """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
     """
     #Filename would be NameofFile.json
-    fh = open(filename, "w")
+    fh = open(filename, "a+")
     expenseData = [expense_dict, avg_expense_dict]
     json.dump(expenseData, fh)
 
