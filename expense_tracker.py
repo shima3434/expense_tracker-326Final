@@ -103,8 +103,8 @@ class Expenses:
         """
         with open(filename) as fh:
             tracker = json.load(fh)
-            for item in tracker:
-                print(item)
+            print (f"Here are your expenses for the month {tracker[0]}")
+            print (f"Here are the expenses of the average American {tracker[1]}")
 
 def main(name, monthly_budget, filename="expenses.json"):
     """ Display the users name, budget, expenses for each category
