@@ -88,7 +88,7 @@ class Expenses:
         """
     #Filename would be NameofFile.json
         fh = open(filename, "a+")
-        expenseData = [self.monthly_expenses, self.avg_expense_dict]
+        expenseData = [self.user_expenses, self.avg_expense_dict]
         json.dump(expenseData, fh)
 
     def read_amounts(self, filename):
@@ -131,7 +131,7 @@ def parse_args(arglist):
     parser.add_argument("filename", type=str,
                         help="Name of the file or path to file")
     args = parser.parse_args()
-    if args.name == str:
+    if args.name != str:
         raise TypeError("Name must be a word")
     if args.total < 0:
         raise ValueError("Your budget must be a positive number")
