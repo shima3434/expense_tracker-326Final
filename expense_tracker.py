@@ -139,4 +139,4 @@ def parse_args(arglist):
 
 if __name__ == "__main__":
     args = parse_args(sys.argv[1:])
-    main(args.name, args.montly_budget, args.filename)
+    main(args.name, args.monthly_budget, args.filename)
