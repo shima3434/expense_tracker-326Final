@@ -72,7 +72,7 @@ class Expenses:
         """
         
     def write_amounts(self, filename):
-        """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
+        """ Writes and saves previous dictionaries as json files which the user can use to track their expenses
         """
     #Filename would be NameofFile.json
         fh = open(filename, "a+")
@@ -80,7 +80,11 @@ class Expenses:
         json.dump(expenseData, fh)
 
     def read_amounts(self, filename):
-        
+        """
+        Reads and print out the contents of a json file
+        args:
+            filename (str): filename/path to a json file
+        """
         fh = open(filename)
         tracker = json.load(fh)
         for item in tracker:
