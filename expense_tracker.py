@@ -2,9 +2,7 @@
 import json
 import sys
 from argparse import ArgumentParser
-"""
-This is an expense tracker that aims to examine ones monthly expenditures by category and give suggestions on where money may be saved.
-"""
+
 
 class Expenses:
     """
@@ -12,10 +10,11 @@ class Expenses:
     Detemrines the ideal or average monthly expenses for a single person. 
     Compares the ideal expenses to the user expenses to describe where the user should save more and gives where the user is spending the most .
     """
-    def __init__(self,name):
+    def __init__(self, name, monthly_budget):
         self.name = name
-
-    def user_Expense(self, total):
+        self.monthly_budget = monthly_budget
+        
+    def user_Expense(self):
         """"
         Creates a dictionary of the users expenses and the total amount they have to spend
         Args:
@@ -23,19 +22,18 @@ class Expenses:
         Side effect: 
             Fills the user expenses dictionary with their total expenses per category
         """
+        self.monthly_expenses = {}
         food = float(input("How much do you spend on food monthly? "))
         utility_bills = float(input("What is your total utility bill? "))
         entertainment = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
         travel = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
         extra = float(input("What is you expense for other miscellaneous things?"))
+        self.monthly_expenses["Food"] = food
+        self.monthly_expenses["Utility Bills"] = utility_bills
+        self.monthly_expenses["Entertainment"] = entertainment
+        self.monthly_expenses["Travel"] = travel
+        self.monthly_expenses["Extra"] = extra
         
-        expense_dict = {}
-        
-        expense_dict["Food"] = food
-        expense_dict["Utility Bills"] = utility_bills
-        expense_dict["Entertainment"] = entertainment
-        expense_dict["Travel"] = travel
-        expense_dict["Extra"] = extra
 
     def ideal_expenses(self, total):
         """
@@ -45,22 +43,12 @@ class Expenses:
         Side effects:
             Creates a dictionay with all average expenses per category
         """
-        avg_expense_dict = {}
+        self.avg_expense_dict = {}
         with open("avgexpenses.txt","r",encoding="utf-8") as f:
             for line in f:
                 (key,val) = line.strip().split(':')
-                avg_expense_dict[key]= val
+                self.avg_expense_dict[key]= val
                 
-                
-class ExpenseAnalysis:
-    """
-    represents the methods used in various analytics for tracking
-    
-    track percentage of categorical spending over the total
-    track what single expense was the highest
-    track which category has the highest spending
-    """
-    
     def percentage(self,expenses):
         """ calculates percentage of categorical spending over the total
         args:
@@ -82,15 +70,21 @@ class ExpenseAnalysis:
         return:
             highest spending category
         """
-
-#Write function ***I think this might be outside of the class***
-def write_amounts(self, filename):
-    """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
-    """
+        
+    def write_amounts(self, filename):
+        """ Writes and saves previous dictionaries as json files which can be used by the user to track their expenses
+        """
     #Filename would be NameofFile.json
-    fh = open(filename, "a+")
-    expenseData = [expense_dict, avg_expense_dict]
-    json.dump(expenseData, fh)
+        fh = open(filename, "a+")
+        expenseData = [self.monthly_expenses, self.avg_expense_dict]
+        json.dump(expenseData, fh)
+
+    def read_amounts(self, filename):
+        
+        fh = open(filename)
+        tracker = json.load(fh)
+        for item in tracker:
+            print([item[:]])
 
 def main():
     """ The actual program
@@ -111,8 +105,7 @@ def parse_args(arglist):
                         help="Dictionary variable from average_expense class")
     parser.add_argument("filename", type=str,
                         help="Name of the file or path to file")   
-    return parser.parse_args(arglist)
-    if args.name !== str:
+    if args.name != str:
         raise TypeError("Name must be a word")
     if args.total < 0:
         raise ValueError("Your budget must be a positive number")
