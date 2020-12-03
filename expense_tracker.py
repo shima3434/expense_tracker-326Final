@@ -70,6 +70,9 @@ class Expenses:
         return:
             largest expense over all the categories
         """
+        max_exp = max(self.user_expenses, key = lambda x: self.user_expenses[x])
+        print(f"The category with the largest expense is {max_exp} with a value of {self.user_expenses[max_exp]}")
+            
         
     def compare(self):
         """ Compares the user expenses dictionary to the ideal expenses dictionary and gives feedback where neccesary
