@@ -1,5 +1,6 @@
 #Names: Shima Abdulla, Do Yun Kim, Burhan Marvi, Joseph Sanchez
 import json
+from argparse import ArgumentParser
 """
 This is an expense tracker that aims to examine ones monthly expenditures by category and give suggestions on where money may be saved.
 """
