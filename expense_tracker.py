@@ -57,9 +57,10 @@ class Expenses:
         returns:
             string messgae of the percentage of budget spent
         """
-        for key, value in self.user_expenses:
-            return(f"you spent {(value/self.monthly_budget)*100}% of your budget on {key}")
-        
+        print("\n")
+        for key, value in self.user_expenses.items():
+            print(f"you spent {(value/self.monthly_budget)*100}% of your budget on {key}")
+        print("\n")
         
     def most_expense(self):
         """ finds the single largest expense
@@ -67,8 +68,8 @@ class Expenses:
             largest expense over all the categories
         """
         max_exp = max(self.user_expenses, key = lambda x: self.user_expenses[x])
-        return(f"The category with the largest expense is {max_exp} with a value of {self.user_expenses[max_exp]}")
-            
+        print(f"The category with the largest expense is {max_exp} with a value of {self.user_expenses[max_exp]}")
+        print("\n")    
         
     def compare(self):
         """ Compares the user expenses dictionary to the ideal expenses dictionary and gives feedback where neccesary
@@ -116,6 +117,9 @@ def main(name, monthly_budget, filename="expenses.json"):
     et = Expenses(name,monthly_budget)
     et.record_expenses()
     et.ideal_expenses()
+    et.percentage()
+    et.most_expense()
+    #et.compare() currently does not work
     et.write_amounts(filename)
     et.read_amounts(filename)    
     
