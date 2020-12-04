@@ -93,7 +93,7 @@ class Expenses:
             filename (str): the files name main method defaults filename
         """
     #Filename would be NameofFile.json
-        with open("expenses.json", "w") as fh:
+        with open(filename, "w") as fh:
             expenseData = [self.user_expenses, self.avg_expense_dict]
             json.dump(expenseData, fh)
 
