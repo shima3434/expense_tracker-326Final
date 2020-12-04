@@ -9,10 +9,11 @@ class Expenses:
     """
     Determines the monthly expenses of a single user by category(i.e, food, utility entertainment etc) 
     Detemrines the ideal or average monthly expenses for a single person. 
-    Compares the ideal expenses to the user expenses to describe where the user should save more and gives where the user is spending the most .
+    Compares the ideal expenses to the user expenses to describe where the user should save more, gives where the user is spending the most, and describes the break down of the monthly expenses in terms of the budget.
     """
     def __init__(self, name, monthly_budget):
-        """ Create an instance of the Expenses class
+        """
+        Create an instance of the Expenses class
         args:
             name (str): Name of user
             monthly_budget(float): Monthly Budget or take-home pay
@@ -30,10 +31,10 @@ class Expenses:
         """
         self.user_expenses = {}
         self.user_expenses["Food"] = float(input("How much do you spend on food monthly? "))
-        self.user_expenses["Utility Bills"] = float(input("What is your total utility bill? "))
+        self.user_expenses["Utility Bills"] = float(input("What is your total monthly utility bill? "))
         self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
-        self.user_expenses["Travel"] = float(input("What is your average momthly travel expense(includes: gas, bus fair etc...)? "))
-        self.user_expenses["Extra"] = float(input("What is you expense for other miscellaneous things? "))
+        self.user_expenses["Travel"] = float(input("What is your average monthly travel expense(includes: gas, bus fair etc...)? "))
+        self.user_expenses["Extra"] = float(input("What is you monthly expense for other miscellaneous things? "))
         
         
     
@@ -55,11 +56,11 @@ class Expenses:
     def percentage(self):
         """ calculates percentage of your total budget spent per expense category 
         returns:
-            string messgae of the percentage of budget spent
+            string message of the percentage of budget spent
         """
         print("\n")
         for key, value in self.user_expenses.items():
-            print(f"you spent {round((value/self.monthly_budget)*100, 2)}% of your budget on {key}")
+            print(f"You spent {round((value/self.monthly_budget)*100, 2)}% of your budget on {key}")
         print("\n")
         
     def most_expense(self):
@@ -68,25 +69,22 @@ class Expenses:
             largest expense over all the categories
         """
         max_exp = max(self.user_expenses, key = lambda x: self.user_expenses[x])
-        print(f"The category with the largest expense is {max_exp} with a value of {self.user_expenses[max_exp]}")
+        print(f"The category with the largest expense is the {max_exp} category with a value of {self.user_expenses[max_exp]}")
         print("\n")    
         
     def compare(self):
         """ Compares the user expenses dictionary to the ideal expenses dictionary and gives feedback where neccesary
-        args:
-            expenses(dict) 
         return:
             String-Feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
         """
-        for key, value in self.user_expenses and self.avg_expense_dict:
+        for key in self.user_expenses and self.avg_expense_dict:
             if self.user_expenses[key] > self.avg_expense_dict[key]:
                 if key in self.user_expenses.keys():
-                    if self.user_expenses[value] > self.avg_expense_dict[value]:
-                        return (f"You are spending above ideal amounts for you monthly {key} expense. Spend less next month")
-                else:
-                    if key in self.user_expenses.keys():
-                        return(f"The amount you are spending is great for your monthly {key} expense.")
-        
+                    print(f"You are spending above the ideal amount for your monthly {key} expense. Spend less next month")
+            else:
+                if key in self.user_expenses.keys():
+                    print(f"The current amount you are spending for your monthly {key} expense is fine.")
+
     def write_amounts(self, filename):
         """ Writes and saves previous dictionaries as json files which the user can use to track their expenses
         args:
@@ -105,7 +103,7 @@ class Expenses:
         with open(filename) as fh:
             tracker = json.load(fh)
             print (f"Here are your expenses for the month {tracker[0]}")
-            print (f"Here are the expenses of the average American {tracker[1]}")
+            print (f"Here are the monthly expenses of the average American {tracker[1]}")
 
 def main(name, monthly_budget, filename="expenses.json"):
     """ Display the users name, budget, expenses for each category
@@ -119,7 +117,7 @@ def main(name, monthly_budget, filename="expenses.json"):
     et.ideal_expenses()
     et.percentage()
     et.most_expense()
-    #et.compare() currently does not work
+    #et.compare() still not working
     et.write_amounts(filename)
     et.read_amounts(filename)    
     
