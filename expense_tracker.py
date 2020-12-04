@@ -55,8 +55,8 @@ class Expenses:
                 
     def percentage(self):
         """ calculates percentage of your total budget spent per expense category 
-        returns:
-            string message of the percentage of budget spent
+        Side effect:
+            Prints a string message of the percentage of budget spent and adds a new line
         """
         print("\n")
         for key, value in self.user_expenses.items():
@@ -65,8 +65,8 @@ class Expenses:
         
     def most_expense(self):
         """ finds the single largest expense
-        return:
-            largest expense over all the categories
+        Side effect:
+            Prints a string with the largest expense over all the categories and a black line below
         """
         max_exp = max(self.user_expenses, key = lambda x: self.user_expenses[x])
         print(f"The category with the largest expense is the {max_exp} category with a value of {self.user_expenses[max_exp]}")
@@ -74,8 +74,8 @@ class Expenses:
         
     def compare(self):
         """ Compares the user expenses dictionary to the ideal expenses dictionary and gives feedback where neccesary
-        return:
-            String-Feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
+        Side effect:
+            prints a string message with feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
         """
         for key in self.user_expenses and self.avg_expense_dict:
             if self.user_expenses[key] > self.avg_expense_dict[key]:
@@ -98,7 +98,9 @@ class Expenses:
     def read_amounts(self, filename):
         """ Reads and print out the contents of a json file
         args:
-            filename (str): filename/path to a json file
+            Filename (str): filename/path to a json file
+        Side effect:
+            prints a message of with that includes the user monthly expenses and a seperate message that includes the ideal expenses
         """
         with open(filename) as fh:
             tracker = json.load(fh)
