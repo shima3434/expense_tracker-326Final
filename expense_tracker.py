@@ -89,6 +89,8 @@ class Expenses:
         """ Writes and saves previous dictionaries as json files which the user can use to track their expenses
         args:
             filename (str): the files name main method defaults filename
+        Side effects:
+            Writes the json file 
         """
     #Filename would be NameofFile.json
         with open(filename, "w") as fh:
