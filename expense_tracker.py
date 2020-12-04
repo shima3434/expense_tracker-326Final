@@ -51,7 +51,7 @@ class Expenses:
         with open("avgexpenses.txt","r",encoding="utf-8") as f:
             for line in f:
                 (key,val) = line.strip().split(':')
-                self.avg_expense_dict[key]= val
+                self.avg_expense_dict[key]= float(val)
                 
     def percentage(self):
         """ calculates percentage of your total budget spent per expense category 
@@ -84,6 +84,7 @@ class Expenses:
             else:
                 if key in self.user_expenses.keys():
                     print(f"The current amount you are spending for your monthly {key} expense is fine.")
+        print("\n")
 
     def write_amounts(self, filename):
         """ Writes and saves previous dictionaries as json files which the user can use to track their expenses
@@ -121,7 +122,7 @@ def main(name, monthly_budget, filename="expenses.json"):
     et.ideal_expenses()
     et.percentage()
     et.most_expense()
-    #et.compare() still not working
+    et.compare()
     et.write_amounts(filename)
     et.read_amounts(filename)    
     
