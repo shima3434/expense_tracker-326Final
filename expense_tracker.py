@@ -59,7 +59,7 @@ class Expenses:
         """
         print("\n")
         for key, value in self.user_expenses.items():
-            print(f"you spent {(value/self.monthly_budget)*100}% of your budget on {key}")
+            print(f"you spent {round((value/self.monthly_budget)*100, 2)}% of your budget on {key}")
         print("\n")
         
     def most_expense(self):
