@@ -1,5 +1,5 @@
 Food:600.00
-Utility Bills:1573.00
+Housing:1573.00
 Entertainment:242.75
 Travel:754.00
 Extra:80.00
