@@ -7,14 +7,17 @@ import sys
 
 class Expenses:
     """
-    Determines the monthly expenses of a single user by category(i.e, food, utility entertainment etc) 
+    Determines the monthly expenses of a single user by category
+    (i.e, food, utility entertainment etc) 
     Detemrines the ideal or average monthly expenses for a single person. 
-    Compares the ideal expenses to the user expenses to describe where the user should save more, gives where the user is spending the most, and describes the break down of the monthly expenses in terms of the budget.
+    Compares the ideal expenses to the user expenses to describe where the user
+    should save more, gives where the user is spending the most, and describes 
+    the break down of the monthly expenses in terms of the budget.
     Attributes:
         name (str): Users Name
-        monthly_budget (float): Amount of money a user has to spend monthly (monthly net income)
-        user_expenses (dictionary): Key value pair where the key is an expense category and the value is the monthly amount associated with that expense provided by the user
-        avg_expense_dict (dictionary): Key value pair where the key is an expense category and the value is the average amount spent on that category in the U.S.  
+        monthly_budget (float): (monthly net income)
+        user_expenses (dict): [Key] expense category : [Value] user monthly expense
+        avg_expense_dict (dict): [Key] expense category : [Value] U.S. avg amount spent
 
     """
     def __init__(self, name, monthly_budget):
@@ -79,9 +82,11 @@ class Expenses:
         print("\n")    
         
     def compare(self):
-        """ Compares the user expenses dictionary to the ideal expenses dictionary and gives feedback where neccesary
+        """ Compares the user expenses dictionary to the ideal expenses 
+            dictionary and gives feedback where neccesary
         Side effect:
-            prints a string message with feedback on the spenditure in terms of should the expenses be decreased per category or if they are fine
+            prints a string message with feedback on the spenditure in terms 
+            of should the expenses be decreased per category or if they are fine
         """
         for key in self.user_expenses and self.avg_expense_dict:
             if self.user_expenses[key] > self.avg_expense_dict[key]:
@@ -93,7 +98,8 @@ class Expenses:
         print("\n")
 
     def write_amounts(self, filename):
-        """ Writes and saves previous dictionaries as json files which the user can use to track their expenses
+        """ Writes and saves previous dictionaries as json files
+            which the user can use to track their expenses
         args:
             filename (str): the files name main method defaults filename
         Side effects:
@@ -109,7 +115,8 @@ class Expenses:
         args:
             Filename (str): filename/path to a json file
         Side effect:
-            prints a message of with that includes the user monthly expenses and a seperate message that includes the ideal expenses
+            prints a message of with that includes the user monthly expenses
+            and a seperate message that includes the ideal expenses
         """
         with open(filename) as fh:
             tracker = json.load(fh)
