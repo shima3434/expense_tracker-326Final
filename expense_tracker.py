@@ -43,14 +43,18 @@ class Expenses:
             Fills the user expenses dictionary with their total expenses per category
         """
         self.user_expenses = {}
-        self.user_expenses["Food"] = float(input("How much do you spend on food monthly? "))
-        self.user_expenses["Housing"] = float(input("What is your total monthly housing bill? "))
-        self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
-        self.user_expenses["Travel"] = float(input("What is your average monthly travel expense(includes: gas, bus fair etc...)? "))
-        self.user_expenses["Extra"] = float(input("What is you monthly expense for other miscellaneous things? "))
-        
-        
-    
+        while True:
+            try:
+                self.user_expenses["Food"] = float(input("How much do you spend on food monthly? "))
+                self.user_expenses["Housing"] = float(input("What is your total monthly housing bill? "))
+                self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
+                self.user_expenses["Travel"] = float(input("What is your average monthly travel expense(includes: gas, bus fair etc...)? "))
+                self.user_expenses["Extra"] = float(input("What is you monthly expense for other miscellaneous things? "))
+            except ValueError:
+                print("Sorry, please input a numerical expenditure")
+            else:
+                break
+            
     def ideal_expenses(self):
         """
         Creates a dictionary of ideal spending amounts per category 
