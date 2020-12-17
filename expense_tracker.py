@@ -7,18 +7,13 @@ import sys
 
 class Expenses:
     """
-<<<<<<< HEAD
     Determines the monthly expenses of a single user by category
-    (i.e, food, utility entertainment etc) 
-=======
-    Determines the monthly expenses of a single user by category(i.e, food, housing, entertainment etc) 
->>>>>>> dd0ede0e9c2886df23de857d10b2945cf7d7d168
     Detemrines the ideal or average monthly expenses for a single person. 
     Compares the ideal expenses to the user expenses to describe where the user
     should save more, gives where the user is spending the most, and describes 
     the break down of the monthly expenses in terms of the budget.
     Attributes:
-        name (str): Users Name
+        name (str): User's Name
         monthly_budget (float): (monthly net income)
         user_expenses (dict): [Key] expense category : [Value] user monthly expense
         avg_expense_dict (dict): [Key] expense category : [Value] U.S. avg amount spent
@@ -36,22 +31,23 @@ class Expenses:
         
     def record_expenses(self):
         """"
-        Creates a dictionary of the users expenses and the total amount they have to spend
+        Creates a dictionary of users expenses per category
         Args:
             monthly_budget(float): The total amount one has to spend on expenses
         Side effect: 
-            Fills the user expenses dictionary with their total expenses per category
+            Fills the user expenses dictionary with expenses per category
+            Prints an error message if the user inputs invalid response
         """
         self.user_expenses = {}
         while True:
             try:
                 self.user_expenses["Food"] = float(input("How much do you spend on food monthly? "))
                 self.user_expenses["Housing"] = float(input("What is your total monthly housing bill? "))
-                self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
-                self.user_expenses["Travel"] = float(input("What is your average monthly travel expense(includes: gas, bus fair etc...)? "))
+                self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment? "))
+                self.user_expenses["Travel"] = float(input("What is your average monthly travel expense? "))
                 self.user_expenses["Extra"] = float(input("What is you monthly expense for other miscellaneous things? "))
             except ValueError:
-                print("Sorry, please input a numerical expenditure")
+                print("Sorry, please input a numerical expenditure value")
             else:
                 break
             
@@ -61,8 +57,7 @@ class Expenses:
         Args:
             monthly_budget(float): The total amount one has to spend on expenses
         Side effects:
-            Creates a dictionay(dict of str and float, the keys will be string(e.g., "Food", "Housing"), 
-            and the values will be float(e.g., "600.00","1573.00") with all ideal (or what we called avg) expenses per category
+            Fills the avg expense dict with ideal expenses per category
         """
         self.avg_expense_dict = {}
         with open("avgexpenses.txt","r",encoding="utf-8") as f:
@@ -71,9 +66,10 @@ class Expenses:
                 self.avg_expense_dict[key]= float(val)
                 
     def percentage(self):
-        """ calculates percentage of your total budget spent per expense category 
+        """ calculates percent of your total budget spent per expense category 
         Side effect:
-            Prints a string message of the percentage of budget spent and adds a new line
+            Prints a str message w/ the percent of budget spent 
+            Prints a new line
         """
         print("\n")
         for key, value in self.user_expenses.items():
@@ -83,7 +79,8 @@ class Expenses:
     def most_expense(self):
         """ finds the single largest expense
         Side effect:
-            Prints a string with the largest expense over all the categories and a black line below
+            Prints a str with the largest expense category and value 
+            Prints a new line below
         """
         max_exp = max(self.user_expenses, key = lambda x: self.user_expenses[x])
         print(f"The category with the largest expense is the {max_exp} category with a value of {self.user_expenses[max_exp]}")
@@ -99,10 +96,10 @@ class Expenses:
         for key in self.user_expenses and self.avg_expense_dict:
             if self.user_expenses[key] > self.avg_expense_dict[key]:
                 if key in self.user_expenses.keys():
-                    print(f"You are spending above the ideal amount for your monthly {key} expense. Spend less next month")
+                    print(f"You are spending too mucuh on {key}! Spend less next month")
             else:
                 if key in self.user_expenses.keys():
-                    print(f"The current amount you are spending for your monthly {key} expense is fine.")
+                    print(f"Your current monthly {key} expense is fine.")
         print("\n")
 
     def write_amounts(self, filename):
