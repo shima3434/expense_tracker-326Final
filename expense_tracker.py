@@ -7,8 +7,12 @@ import sys
 
 class Expenses:
     """
+<<<<<<< HEAD
     Determines the monthly expenses of a single user by category
     (i.e, food, utility entertainment etc) 
+=======
+    Determines the monthly expenses of a single user by category(i.e, food, housing, entertainment etc) 
+>>>>>>> dd0ede0e9c2886df23de857d10b2945cf7d7d168
     Detemrines the ideal or average monthly expenses for a single person. 
     Compares the ideal expenses to the user expenses to describe where the user
     should save more, gives where the user is spending the most, and describes 
@@ -40,7 +44,7 @@ class Expenses:
         """
         self.user_expenses = {}
         self.user_expenses["Food"] = float(input("How much do you spend on food monthly? "))
-        self.user_expenses["Utility Bills"] = float(input("What is your total monthly utility bill? "))
+        self.user_expenses["Housing"] = float(input("What is your total monthly housing bill? "))
         self.user_expenses["Entertainment"] = float(input("How much do you spend on entertainment(i.e going to the movies, iceskating, etc...)? "))
         self.user_expenses["Travel"] = float(input("What is your average monthly travel expense(includes: gas, bus fair etc...)? "))
         self.user_expenses["Extra"] = float(input("What is you monthly expense for other miscellaneous things? "))
@@ -53,7 +57,7 @@ class Expenses:
         Args:
             monthly_budget(float): The total amount one has to spend on expenses
         Side effects:
-            Creates a dictionay(dict of str and float, the keys will be string(e.g., "Food", "Utility), 
+            Creates a dictionay(dict of str and float, the keys will be string(e.g., "Food", "Housing"), 
             and the values will be float(e.g., "600.00","1573.00") with all ideal (or what we called avg) expenses per category
         """
         self.avg_expense_dict = {}
