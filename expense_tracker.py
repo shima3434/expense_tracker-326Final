@@ -10,6 +10,12 @@ class Expenses:
     Determines the monthly expenses of a single user by category(i.e, food, utility entertainment etc) 
     Detemrines the ideal or average monthly expenses for a single person. 
     Compares the ideal expenses to the user expenses to describe where the user should save more, gives where the user is spending the most, and describes the break down of the monthly expenses in terms of the budget.
+    Attributes:
+        name (str): Users Name
+        monthly_budget (float): Amount of money a user has to spend monthly (monthly net income)
+        user_expenses (dictionary): Key value pair where the key is an expense category and the value is the monthly amount associated with that expense provided by the user
+        avg_expense_dict (dictionary): Key value pair where the key is an expense category and the value is the average amount spent on that category in the U.S.  
+
     """
     def __init__(self, name, monthly_budget):
         """
