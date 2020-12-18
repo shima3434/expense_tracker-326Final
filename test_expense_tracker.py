@@ -2,22 +2,25 @@
 """ Test expense tracker script """
 
 import pytest
-import expense_tracker as exp_track
+import builtins
+from unittest import mock
+
+import expense_tracker 
 from expense_tracker import Expenses 
 
+        
 def test_ideal_expenses():
-     """Test ideal_expenses"""
-     e = Expenses("bob", 3249.75)
-     assert isinstance(e.avg_expense_dict, dict)
-     assert e.ideal_expenses() == {"Food":600.00,
-                                 "Housing":1573.00,
-                                 "Entertainment":242.75,
-                                 "Travel":754.00,
-                                 "Extra":80.00}
+    """Test ideal_expenses"""
+    e = Expenses("bob", 3249.75)
+    assert isinstance(e.avg_expense_dict, dict)
+    assert e.ideal_expenses() == {"Food":600.00,
+                                  "Housing":1573.0,
+                                  "Entertainment":242.75,
+                                  "Travel":754.00,
+                                  "Extra":80.00}
      
 def test_percentage(capsys):
     """Test percentage()"""
-    
     e = Expenses("bob", 3249.75)
     assert isinstance(e.monthly_budget, float)
     e.percentage()
@@ -34,10 +37,20 @@ def test_most_expense(capsys):
     e.most_expense()
     captured = capsys.readouterr()
     assert captured.out == ("The category with the largest expense is the Housing category with a value of 1573.0\n\n\n")
-    
-def test_compare_happy_path():
-    """ Some happy path cases to test the compare function """
 
-def test_compare_happy_edge():
-    """ Some edge cases to test the compare function """
+def test_compare_happy_path(capsys):
+    """ Some happy path cases to test the compare function """
+    e = Expenses("bob", 3249.75)
+
+    with mock.patch("builtins.input", side_effect=[400, 1400, 200, 400, 70]):
+        e.record_expenses()
+    e.ideal_expenses()
+    e.compare()
+    captured = capsys.readouterr()
+    assert captured.out == ("Your current monthly Food expense is fine.\n"
+                            "Your current monthly Housing expense is fine.\n"
+                            "Your current monthly Entertainment expense is fine.\n"
+                            "Your current monthly Travel expense is fine.\n"
+                            "Your current monthly Extra expense is fine.\n\n\n")
+
 
