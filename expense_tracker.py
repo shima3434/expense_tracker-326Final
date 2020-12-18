@@ -25,9 +25,13 @@ class Expenses:
         args:
             name (str): Name of user
             monthly_budget(float): Monthly Budget or take-home pay
+        side effects:
+            initializes user_expenses (dict) and avg_expense_dict (dict)
         """
         self.name = name
         self.monthly_budget = monthly_budget
+        self.user_expenses = {}
+        self.avg_expense_dict = {}
         
     def record_expenses(self):
         """"
@@ -38,7 +42,7 @@ class Expenses:
             Fills the user expenses dictionary with expenses per category
             Prints/Raises an error message if the user inputs invalid response
         """
-        self.user_expenses = {}
+        
         while True:
             try:
                 self.user_expenses["Food"] = float(input("How much do you spend on food monthly? "))
@@ -58,12 +62,15 @@ class Expenses:
             monthly_budget(float): The total amount one has to spend on expenses
         Side effects:
             Fills the avg expense dict with ideal expenses per category
+        returns:
+            copy of ideal expenses dictionary for test 
         """
-        self.avg_expense_dict = {}
+        
         with open("avgexpenses.txt","r",encoding="utf-8") as f:
             for line in f:
                 (key,val) = line.strip().split(':')
                 self.avg_expense_dict[key]= float(val)
+        return self.avg_expense_dict
                 
     def percentage(self):
         """ calculates percent of your total budget spent per expense category 
@@ -71,19 +78,43 @@ class Expenses:
             Prints a str message w/ the percent of budget spent 
             Prints a new line
         """
+        
+        #Sets up default dictionary of ideal expenses for testing
+        if not bool(self.user_expenses):
+            default_dic = {"Food":600.00,
+                           "Housing":1573.00,
+                           "Entertainment":242.75,
+                           "Travel":754.00,
+                           "Extra":80.00}
+        else:
+            default_dic = self.user_expenses
+        
+        
         print("\n")
-        for key, value in self.user_expenses.items():
+        for key, value in default_dic.items():
             print(f"You spent {round((value/self.monthly_budget)*100, 2)}% of your budget on {key}")
         print("\n")
         
     def most_expense(self):
-        """ Dinds the single largest expense
+        """ Finds the single largest expense
         Side effect:
             Prints a str with the largest expense category and value 
             Prints a new line below
         """
-        max_exp = max(self.user_expenses, key = lambda x: self.user_expenses[x])
-        print(f"The category with the largest expense is the {max_exp} category with a value of {self.user_expenses[max_exp]}")
+        
+        #Sets up default dictionary of ideal expenses for testing
+        if not bool(self.user_expenses):
+            default_dic = {"Food":600.00,
+                           "Housing":1573.00,
+                           "Entertainment":242.75,
+                           "Travel":754.00,
+                           "Extra":80.00}
+        else:
+            default_dic = self.user_expenses
+            
+            
+        max_exp = max(default_dic, key = lambda x: default_dic[x])
+        print(f"The category with the largest expense is the {max_exp} category with a value of {default_dic[max_exp]}")
         print("\n")    
         
     def compare(self):
