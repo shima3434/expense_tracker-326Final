@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 [{"Food": 3000.0, "Utility Bills": 400.0, "Entertainment": 100.0, "Travel": 200.0, "Extra": 30.0}, {"Food": "600.00", "Utility Bills": "1573.00", "Entertainment": "242.75", "Travel": "754.00", "Extra": "80.00"}]
+=======
+[{"Food": 90.0, "Housing": 90.0, "Entertainment": 90.0, "Travel": 90.0, "Extra": 90.0}, {"Food": 600.0, "Housing": 1573.0, "Entertainment": 242.75, "Travel": 754.0, "Extra": 80.0}]
+>>>>>>> e40999274e34a589750394980f0e8bdcf480f5cc
