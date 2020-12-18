@@ -13,10 +13,10 @@ class Expenses:
     should save more, gives where the user is spending the most, and describes 
     the break down of the monthly expenses in terms of the budget.
     Attributes:
-        name (str): User's Name
-        monthly_budget (float): (monthly net income)
-        user_expenses (dict): [Key] expense category : [Value] user monthly expense
-        avg_expense_dict (dict): [Key] expense category : [Value] U.S. avg amount spent
+        name(str): User's Name
+        monthly_budget(float): (monthly net income)
+        user_expenses(dict): Key(expense category) :Val(user monthly expense)
+        avg_expense_dict(dict): Key(expense category) :Val(U.S avg amount spent)
 
     """
     def __init__(self, name, monthly_budget):
@@ -36,7 +36,7 @@ class Expenses:
             monthly_budget(float): The total amount one has to spend on expenses
         Side effect: 
             Fills the user expenses dictionary with expenses per category
-            Prints an error message if the user inputs invalid response
+            Prints/Raises an error message if the user inputs invalid response
         """
         self.user_expenses = {}
         while True:
@@ -77,7 +77,7 @@ class Expenses:
         print("\n")
         
     def most_expense(self):
-        """ finds the single largest expense
+        """ Dinds the single largest expense
         Side effect:
             Prints a str with the largest expense category and value 
             Prints a new line below
@@ -96,7 +96,7 @@ class Expenses:
         for key in self.user_expenses and self.avg_expense_dict:
             if self.user_expenses[key] > self.avg_expense_dict[key]:
                 if key in self.user_expenses.keys():
-                    print(f"You are spending too mucuh on {key}! Spend less next month")
+                    print(f"You are spending too much on {key}! Spend less next month")
             else:
                 if key in self.user_expenses.keys():
                     print(f"Your current monthly {key} expense is fine.")
@@ -126,7 +126,7 @@ class Expenses:
         with open(filename) as fh:
             tracker = json.load(fh)
             print (f"Here are your expenses for the month {tracker[0]}")
-            print (f"Here are the monthly expenses of the average American {tracker[1]}")
+            print (f"Here are the average American's monthly expenses {tracker[1]}")
 
 def main(name, monthly_budget, filename="expenses.json"):
     """ Display the users name, budget, expenses for each category
@@ -154,7 +154,7 @@ def parse_args(arglist):
     parser.add_argument("name", type=str,
                         help="Name of user")
     parser.add_argument("monthly_budget", type=float,
-                        help="Monthly budget that is allowed to be spent")
+                        help="Monthly budget of the User")
     args = parser.parse_args()
     return args
 
