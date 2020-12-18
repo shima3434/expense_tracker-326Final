@@ -8,18 +8,21 @@ from unittest import mock
 import expense_tracker 
 from expense_tracker import Expenses 
 
+<<<<<<< HEAD
         
 
+=======
+>>>>>>> f6e6b860f41084b754f7a48774a0301839af92a2
 def test_ideal_expenses():
-    """Test ideal_expenses"""
+    """Test ideal expenses"""
     e = Expenses("bob", 3249.75)
     assert isinstance(e.avg_expense_dict, dict)
     assert e.ideal_expenses() == {"Food":600.00,
                                   "Housing":1573.0,
                                   "Entertainment":242.75,
                                   "Travel":754.00,
-                                  "Extra":80.00}
-     
+                                  "Extra":80.00}      
+
 def test_percentage(capsys):
     """Test percentage()"""
     e = Expenses("bob", 3249.75)
