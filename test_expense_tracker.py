@@ -60,17 +60,7 @@ def test_compare_happy_path(capsys):
                             "You're spending too much on Entertainment! Spend less next month\n"
                             "You're spending too much on Travel! Spend less next month\n"
                             "You're spending too much on Extra! Spend less next month\n\n\n")
-    with mock.patch("builtins.input", side_effect=[601, 1572, 243, 760, 65]):
-        e.record_expenses()
-    e.ideal_expenses()
-    e.compare()
-    captured = capsys.readouterr()
-    assert captured.out == ("You're spending too much on Food! Spend less next month\n"
-                            "Your current monthly Housing expense is fine.\n"
-                            "You're spending too much on Entertainment! Spend less next month\n"
-                            "You're spending too much on Travel! Spend less next month\n"
-                            "Your current monthly Extra expense is fine.\n\n\n")
-
+    
 def test_compare_edge(capsys):
     """ Some edge cases to test the compare function """
     e = Expenses("Tom", 17000)
@@ -94,3 +84,13 @@ def test_compare_edge(capsys):
                             "You're spending too much on Entertainment! Spend less next month\n"
                             "You're spending too much on Travel! Spend less next month\n"
                             "You're spending too much on Extra! Spend less next month\n\n\n")
+    with mock.patch("builtins.input", side_effect=[601, 1572, 243, 760, 65]):
+        e.record_expenses()
+    e.ideal_expenses()
+    e.compare()
+    captured = capsys.readouterr()
+    assert captured.out == ("You're spending too much on Food! Spend less next month\n"
+                            "Your current monthly Housing expense is fine.\n"
+                            "You're spending too much on Entertainment! Spend less next month\n"
+                            "You're spending too much on Travel! Spend less next month\n"
+                            "Your current monthly Extra expense is fine.\n\n\n")
