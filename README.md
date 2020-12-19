@@ -29,6 +29,6 @@ Explanation of the program
 
 Bibliography
 
-Frankel, M. (2020). How does the average American spend their paycheck? See how you compare. Retrieved 4 December 2020, from https://www.usatoday.com/story/money/personalfinance/budget-and-spending/2018/05/08/how- does-average-american-spend-paycheck/34378157/
+Frankel, M. (2020). How does the average American spend their paycheck? See how you compare. Retrieved 4 December 2020, from https://www.usatoday.com/story/money/personalfinance/budget-and-spending/2018/05/08/how-does-average-american-spend-paycheck/34378157/
 
    This source was utilized to create the avg_expense_dict which is a dictionary on the average American expenses per category. We chose five categories and their corresponding expenses to represent throughout our code. Information from this site was written to a .txt file which was then read into our code.
