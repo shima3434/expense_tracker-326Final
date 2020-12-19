@@ -64,6 +64,8 @@ class Expenses:
             Fills the avg expense dict with ideal expenses per category
         returns:
             copy of ideal expenses dictionary for test 
+            
+        URL of data used in avgexpenses.txt: https://www.usatoday.com/story/money/personalfinance/budget-and-spending/2018/05/08/how-does-average-american-spend-paycheck/34378157/
         """
         
         with open("avgexpenses.txt","r",encoding="utf-8") as f:
