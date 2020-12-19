@@ -39,7 +39,6 @@ def test_most_expense(capsys):
 def test_compare_happy_path(capsys):
     """ Some happy path cases to test the compare function """
     e = Expenses("ana", 11500)
-
     with mock.patch("builtins.input", side_effect=[400, 1400, 200, 400, 70]):
         e.record_expenses()
     e.ideal_expenses()
@@ -60,6 +59,16 @@ def test_compare_happy_path(capsys):
                             "You're spending too much on Entertainment! Spend less next month\n"
                             "You're spending too much on Travel! Spend less next month\n"
                             "You're spending too much on Extra! Spend less next month\n\n\n")
+    with mock.patch("builtins.input", side_effect=[300, 1700, 1400, 900, 65]):
+        e.record_expenses()
+    e.ideal_expenses()
+    e.compare()
+    captured = capsys.readouterr()
+    assert captured.out == ("Your current monthly Food expense is fine.\n"
+                            "You're spending too much on Housing! Spend less next month\n"
+                            "You're spending too much on Entertainment! Spend less next month\n"
+                            "You're spending too much on Travel! Spend less next month\n"
+                            "Your current monthly Extra expense is fine.\n\n\n")
     
 def test_compare_edge(capsys):
     """ Some edge cases to test the compare function """
