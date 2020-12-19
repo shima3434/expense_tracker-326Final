@@ -127,7 +127,7 @@ class Expenses:
         for key in self.user_expenses and self.avg_expense_dict:
             if self.user_expenses[key] > self.avg_expense_dict[key]:
                 if key in self.user_expenses.keys():
-                    print(f"You are spending too much on {key}! Spend less next month")
+                    print(f"You're spending too much on {key}! Spend less next month")
             else:
                 if key in self.user_expenses.keys():
                     print(f"Your current monthly {key} expense is fine.")
