@@ -14,7 +14,7 @@ test_expense_tracker.py - This is the test script for our expense_tracker.py fil
 
 LICENSE - License from GitHub
 
-README.PDF - Explain the purpose of each file in the repository, explain the instructions to use our program, explain the output of the program, and present an annotated bibliography.
+README.md - Explain the purpose of each file in the repository, explain the instructions to use our program, explain the output of the program, and present an annotated bibliography.
 
 Instructions to use the program
 
